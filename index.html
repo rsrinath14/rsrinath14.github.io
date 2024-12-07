@@ -207,14 +207,78 @@
     <div class="container">
       <h1 class="title">Publications</h1>
       <hr />
+      <!-- Common CSS for Images -->
+      <style>
+        .card {
+          display: flex;
+          align-items: stretch;
+          position: relative;
+          margin-bottom: 20px;
+          transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-      <!-- First Card: TurboGS -->
+        .card:hover {
+          transform: scale(1.0);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-image {
+          flex: 0 0 auto;
+          width: 300px;
+          aspect-ratio: 1 / 1;
+          /* Maintain a square aspect ratio */
+          overflow: hidden;
+          padding: 10px;
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .card-image img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+
+        .card-content {
+          flex: 1;
+          padding-left: 20px;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+        }
+
+        /* Hover Effect */
+        .card-publication-1:hover #card-media-1 {
+          transform: scale(1.05);
+          content: url('img/publications/turbo_graph.png');
+        }
+
+        .card-publication-2:hover #card-media-2 {
+          transform: scale(1.05);
+          content: url('img/publications/acc_masks.png');
+        }
+
+        .card-publication-3:hover #card-media-3 {
+          transform: scale(1.05);
+          content: url('img/publications/publication3_hover.png');
+        }
+
+        .card-publication-4:hover #card-media-4 {
+          transform: scale(1.05);
+          content: url('img/publications/publication4_hover.png');
+        }
+      </style>
+
+      <!-- Publication 1: Turbo-GS -->
       <div class="card card-publication-1" style="display: flex; align-items: stretch; position: relative;">
         <div class="card-image"
           style="flex: 0 0 auto; width: 350px; height: 350px; padding: 10px; box-sizing: border-box;">
           <figure class="image" style="width: 100%; height: 100%; margin: 0;">
-            <img id="card-media-1" src="img/unscriptai_logo.jpeg" alt="Strata-NeRF"
-              style="width: 100%; height: 100%; object-fit: contain; transition: 0.3s;">
+            <img id="card-media-1" src="img/publications/turbo_teaser.png" alt="Turbo-GS"
+              style="width: 100%; height: 100%; object-fit: contain; ">
           </figure>
         </div>
         <div class="card-content" style="flex: 1; padding-left: 20px;">
@@ -239,48 +303,35 @@
                 <span style="margin-right: 4px;">R&nbsp;Venkatesh&nbsp;Babu,</span>
                 <span>Srinath&nbsp;Sridhar</span>
               </p>
-
-              <!-- Under Review note inserted here -->
               <div
                 style="font-size: 1.0rem; color: black; font-weight: bold; display: inline-block; padding: 0; margin: 0;">
                 <p style="margin: 0; padding: 0;">Under Review</p>
               </div>
             </div>
           </div>
-
-          <div class="content" style="margin-top: 2px;">
-            <p style="margin-top: 0; padding-top: 0;">Novel-view synthesis is key for 3D reconstruction and mixed
-              reality, with 3D Gaussian Splatting (3DGS) offering real-time, high-quality results. However, 3DGS is slow
-              to train, taking up to 30 minutes for 200 views. Turbo-GS speeds up optimization by using fewer steps,
-              improving densification with error guidance, and introducing a convergence-aware budget control mechanism,
-              all while maintaining high-quality rendering.</p>
+          <div class="content">
+            Novel-view synthesis is key for 3D reconstruction and mixed reality, with 3D Gaussian Splatting (3DGS)
+            offering real-time, high-quality results. However, 3DGS is slow to train, taking up to 30 minutes for 200
+            views. Turbo-GS speeds up optimization by using fewer steps, improving densification with error guidance,
+            and introducing a convergence-aware budget control mechanism, all while maintaining high-quality rendering.
           </div>
         </div>
-        <style>
-          /* Hover effect for the first card */
-          .card-publication-1:hover #card-media-1 {
-            content: url('img/publications/turbo_graph.png');
-          }
-
-          .card-publication-1 #card-media-1 {
-            content: url('img/publications/turbo_teaser.png');
-          }
-        </style>
       </div>
 
-      <!-- Second Card: TurboGS -->
+      <!-- Publication 2: Acc3DSeg -->
       <div class="card card-publication-2" style="display: flex; align-items: stretch; position: relative;">
         <div class="card-image"
           style="flex: 0 0 auto; width: 350px; height: 350px; padding: 10px; box-sizing: border-box;">
           <figure class="image" style="width: 100%; height: 100%; margin: 0;">
-            <img id="card-media-2" src="img/unscriptai_logo.jpeg" alt="Strata-NeRF"
-              style="width: 100%; height: 100%; object-fit: contain; transition: 0.3s;">
+            <img id="card-media-2" src="img/publications/acc_rgb.png" alt="Acc3DSeg"
+              style="width: 100%; height: 100%; object-fit: hidden; ">
           </figure>
         </div>
         <div class="card-content" style="flex: 1; padding-left: 20px;">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4" style="margin: 0;">Acc3DSeg: Accelerated 3D Segmentation via Contrastive Learning</p>
+              <p class="title is-4" style="margin: 0;">Acc3DSeg: Accelerated 3D Segmentation via Contrastive Learning
+              </p>
               <p class="subtitle is-6" style="line-height: 1.8; margin: 0;">
                 <span style="margin-right: 4px; position: relative; display: inline-block;">
                   Ankit&nbsp;Dhiman,
@@ -298,121 +349,85 @@
                   R&nbsp;Venkatesh&nbsp;Babu
                 </span>
               </p>
-
-              <!-- Under Review note inserted here -->
               <div
                 style="font-size: 1.0rem; color: black; font-weight: bold; display: inline-block; padding: 0; margin: 0;">
                 <p style="margin: 0; padding: 0;">Under Review</p>
               </div>
             </div>
           </div>
-
-          <div class="content" style="margin-top: 2px;">
-            <p style="margin-top: 0; padding-top: 0;">Recent advances in novel-view synthesis, like NeRF and 3DGS, have
+          <div class="content">
+            <p style="margin-top: 0; padding-top: 0;">Recent advances in novel-view synthesis, including NeRF and 3DGS, have
               driven efforts to lift 2D segmentation labels to 3D. Existing methods often struggle with multi-view
               consistency and rely on costly two-stage processes. This work proposes an efficient, single-stage
               framework for 3D segmentation that eliminates offline clustering and object count dependencies, improving
               performance on complex real-world scenes.</p>
           </div>
         </div>
-        <style>
-          /* Hover effect for the second card */
-          .card-publication-2:hover #card-media-2 {
-            content: url('img/publications/acc_masks.png');
-          }
-
-          .card-publication-2 #card-media-2 {
-            content: url('img/publications/acc_rgb.png');
-          }
-        </style>
       </div>
 
-
-
-      <!-- Third Card: CoRF -->
+      <!-- Publication 3: ChromaDistill -->
       <div class="card card-publication-3" style="display: flex; align-items: stretch; position: relative;">
         <div class="card-image"
           style="flex: 0 0 auto; width: 350px; height: 350px; padding: 10px; box-sizing: border-box;">
           <figure class="image" style="width: 100%; height: 100%; margin: 0;">
-            <img id="card-media" src="img/unscriptai_logo.jpeg" alt="Turbo-GS"
-              style="width: 100%; height: 100%; object-fit: cover; transition: 0.3s;">
+            <img id="card-media-3" src="img/publications/leaves_grey.gif" alt="Publication 3"
+              style="width: 100%; height: 100%; object-fit: hidden; ">
           </figure>
         </div>
         <div class="card-content" style="flex: 1; padding-left: 20px;">
           <div class="media">
             <div class="media-content">
-              <p class="title is-4" style="margin: 0;">ChromaDistill: Colorizing Monochrome Radiance Fields with
+              <p class="title is-4" style="margin: 0;"><p class="title is-4" style="margin: 0;">ChromaDistill: Colorizing Monochrome Radiance Fields with
                 Knowledge Distillation</p>
-              <p class="subtitle is-6" style="line-height: 1.8; margin: 0;">
-                <span style="margin-right: 4px;">Ankit&nbsp;Dhiman,</span>
-                <span style="margin-right: 4px; font-weight: 900; color: #000;"><strong>Srinath&nbsp;R,</strong></span>
-                <span style="margin-right: 4px;">Srinjay&nbsp;Sarkar,</span>
-                <span style="margin-right: 4px; position: relative; display: inline-block;">
-                  Lokesh&nbsp;R&nbsp;Boregowda,
-                </span>
-                <span style="margin-right: 4px; position: relative; display: inline-block;">
-                  R&nbsp;Venkatesh&nbsp;Babu
-                </span>
-              </p>
-
-
-              <!-- Under Review note inserted here -->
-              <div
+                <p class="subtitle is-6" style="line-height: 1.8; margin: 0;">
+                  <span style="margin-right: 4px;">Ankit&nbsp;Dhiman,</span>
+                  <span style="margin-right: 4px; font-weight: 900; color: #000;"><strong>Srinath&nbsp;R,</strong></span>
+                  <span style="margin-right: 4px;">Srinjay&nbsp;Sarkar,</span>
+                  <span style="margin-right: 4px; position: relative; display: inline-block;">
+                    Lokesh&nbsp;R&nbsp;Boregowda,
+                  </span>
+                  <span style="margin-right: 4px; position: relative; display: inline-block;">
+                    R&nbsp;Venkatesh&nbsp;Babu
+                  </span>
+                </p>
+                <div
                 style="font-size: 1.0rem; color: black; font-weight: bold; display: inline-block; padding: 0; margin: 0;">
                 <p style="margin: 0; padding: 0;">WACV 2025 (Also appeared in AI3DCC workshop in ICCV'23)</p>
               </div>
             </div>
           </div>
-
-          <div class="content" style="margin-top: 2px; font-family: Arial, sans-serif;">
-            <div class="content" style="margin-top: 2px;">
-              <p style="margin-top: 0; padding-top: 0; line-height: 1.6; font-size: 14px; color: #333;">
-                This work presents a method for colorizing 3D scenes from grayscale multi-view images using pre-trained
-                image colorization models. The approach ensures high-quality, consistent colorization without added
-                computational
-                overhead during inference. It is effective for NeRF and 3DGS representations, producing high-quality
-                results
-                across diverse scenes.
-              </p>
-            </div>
-            <div class="tags" style="margin-top: 10px;">
-              <a href="https://val.cds.iisc.ac.in/chroma-distill.github.io/" target="_blank" rel="noopener noreferrer"
-                style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-                Project Page
-              </a>
-              <a href="https://arxiv.org/pdf/2309.07668" target="_blank" rel="noopener noreferrer"
-                style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-                Paper
-              </a>
-              <a href="https://github.com/val-iisc/ChromaDistill" target="_blank" rel="noopener noreferrer"
-                style="display: inline-block; padding: 8px 12px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-                Code
-              </a>
-            </div>
-
+          <div class="content" style="margin-top: 2px;">
+            <p style="margin-top: 0; padding-top: 0;">This work presents a method for colorizing 3D scenes from
+              grayscale multi-view images using pre-trained
+              image colorization models. The approach ensures high-quality, consistent colorization without added
+              computational overhead during inference. It is effective for NeRF and 3DGS representations, producing high-quality
+              results across diverse scenes.</p>
+          </div>
+          <div class="tags" style="margin-top: 10px;">
+            <a href="https://val.cds.iisc.ac.in/chroma-distill.github.io/" target="_blank" rel="noopener noreferrer"
+              style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
+              Project Page
+            </a>
+            <a href="https://arxiv.org/pdf/2309.07668" target="_blank" rel="noopener noreferrer"
+              style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
+              Paper
+            </a>
+            <a href="https://github.com/val-iisc/ChromaDistill" target="_blank" rel="noopener noreferrer"
+              style="display: inline-block; padding: 8px 12px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
+              Code
+            </a>
           </div>
 
-
         </div>
-        <style>
-          /* Hover effect */
-          .card-publication-3:hover .card-image img {
-            content: url('img/publications/leaves_ours.gif');
-          }
-
-          .card-publication-3 .card-image img {
-            content: url('img/publications/leaves_grey.gif');
-          }
-        </style>
       </div>
 
-      <!-- Fourth Card: Strata-NeRF -->
-      <div class="card card-publication-2" style="display: flex; align-items: stretch; position: relative;">
+      <!-- Publication 4: Strata-NeRF -->
+      <div class="card card-publication-4" style="display: flex; align-items: stretch; position: relative;">
         <div class="card-image"
           style="flex: 0 0 auto; width: 350px; height: 350px; padding: 10px; box-sizing: border-box;">
           <figure class="image" style="width: 100%; height: 100%; margin: 0;">
-            <img id="card-media" src="img/unscriptai_logo.jpeg" alt="Strata-NeRF"
-              style="width: 100%; height: 100%; object-fit: cover; transition: 0.3s;">
+            <img id="card-media-4" src="img/publications/strata_blur.gif" alt="Publication 4"
+              style="width: 100%; height: 100%; object-fit: hidden; ">
           </figure>
         </div>
         <div class="card-content" style="flex: 1; padding-left: 20px;">
@@ -428,57 +443,73 @@
                 <span style="margin-right: 4px;">Srinath&nbsp;Sridhar,</span>
                 <span>R&nbsp;Venkatesh&nbsp;Babu</span>
               </p>
-
-              <!-- Under Review note inserted here -->
               <div
                 style="font-size: 1.0rem; color: black; font-weight: bold; display: inline-block; padding: 0; margin: 0;">
                 <p style="margin: 0; padding: 0;">ICCV 2023</p>
               </div>
             </div>
           </div>
-
           <div class="content" style="margin-top: 2px;">
-            <div class="content" style="margin-top: 2px;">
-              <p style="margin-top: 0; padding-top: 0;">Strata-NeRF extends Neural Radiance Fields (NeRF) to model
-                layered scenes, enabling smooth transitions between different scene levels. By conditioning on Vector
-                Quantized (VQ) latent representations, it handles abrupt structural changes. Evaluations show it
-                captures stratified scenes with high fidelity and minimal artifacts, outperforming existing methods.</p>
-            </div>
-            <div class="tags" style="margin-top: 10px;">
-              <a href="https://ankitatiisc.github.io/Strata-NeRF" target="_blank" rel="noopener noreferrer"
-                style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-                Project Page
-              </a>
-              <a href="https://arxiv.org/pdf/2308.10337" target="_blank" rel="noopener noreferrer"
-                style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-                Paper
-              </a>
-              <a href="https://github.com/ankitatiisc/Strata-NeRF" target="_blank" rel="noopener noreferrer"
-                style="display: inline-block; padding: 8px 12px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-                Code
-              </a>
-            </div>
-
+            <p style="margin-top: 0; padding-top: 0;">Strata-NeRF extends Neural Radiance Fields (NeRF) to model
+              layered scenes, enabling smooth transitions between different scene levels. By conditioning on Vector
+              Quantized (VQ) latent representations, it handles abrupt structural changes. Evaluations show it
+              captures stratified scenes with high fidelity and minimal artifacts, outperforming existing methods.</p>
           </div>
-
+          <div class="tags" style="margin-top: 10px;">
+            <a href="https://ankitatiisc.github.io/Strata-NeRF" target="_blank" rel="noopener noreferrer"
+              style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
+              Project Page
+            </a>
+            <a href="https://arxiv.org/pdf/2308.10337" target="_blank" rel="noopener noreferrer"
+              style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
+              Paper
+            </a>
+            <a href="https://github.com/ankitatiisc/Strata-NeRF" target="_blank" rel="noopener noreferrer"
+              style="display: inline-block; padding: 8px 12px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
+              Code
+            </a>
+          </div>
         </div>
-        <style>
-          /* Hover effect */
-          .card-publication-2:hover .card-image img {
-            content: url('img/publications/strata_ours.gif');
-          }
-
-          .card-publication-2 .card-image img {
-            content: url('img/publications/strata_blur.gif');
-          }
-        </style>
       </div>
 
+      <!-- Hover Effect Styling -->
+      <style>
+        .card {
+          transition: transform 0.1s ease, box-shadow 0.3s ease;
+        }
 
+        .card:hover {
+          transform: scale(1.0);
+          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
 
+        .card .card-image img {
+          transition: transform 0.1s ease;
+        }
 
+        .card-publication-1:hover #card-media-1 {
+          transform: scale(1.0);
+          content: url('img/publications/turbo_graph.png');
+        }
 
+        .card-publication-2:hover #card-media-2 {
+          transform: scale(1.0);
+          content: url('img/publications/acc_masks.png');
+        }
+
+        .card-publication-3:hover #card-media-3 {
+          transform: scale(1.0);
+          content: url('img/publications/leaves_ours.gif');
+        }
+
+        .card-publication-4:hover #card-media-4 {
+          transform: scale(1.0);
+          content: url('img/publications/strata_ours.gif');
+        }
+      </style>
+    </div>
   </section>
+
 
 
   <section class="section">
@@ -769,8 +800,8 @@
             <ul>
               <li>Ranked among the top 5% of my batch.</li>
               <li>Worked as a Research Assistant under Prof. Swetha M. D., focusing on automating the diagnosis of MS
-                lesions in normally appearing white matter in collaboration with doctors from <a href="https://nimhans.ac.in/"
-                target="_blank"><strong>NIMHANS</strong></a> .</li>
+                lesions in normally appearing white matter in collaboration with doctors from <a
+                  href="https://nimhans.ac.in/" target="_blank"><strong>NIMHANS</strong></a> .</li>
               <li>Collaborated with Prof. Vindhya as a co-guide for final-year capstone projects in the AIML department.
               </li>
             </ul>
@@ -785,10 +816,11 @@
     <div class="container">
       <h1 class="title">Academic Service</h1>
       <hr />
-      <p>Served as a reviewer for prestigious conferences, including ACM Multimedia 2023, ACML 2023, AI-ML Systems 2023, WACV 2024, CVPR 2024, ECCV 2024, ACML 2024, WACV 2025, and ICLR 2025.</p>
+      <p>Served as a reviewer for prestigious conferences, including ACM Multimedia 2023, ACML 2023, AI-ML Systems 2023,
+        WACV 2024, CVPR 2024, ECCV 2024, ACML 2024, WACV 2025, and ICLR 2025.</p>
     </div>
   </section>
-  
+
 
 
   <!-- <footer class="footer">
