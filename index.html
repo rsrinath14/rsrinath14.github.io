@@ -3,34 +3,128 @@
 
 <head>
   <title>Srinath Ravi</title>
+  <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="icon" href="favicon.png" type="image/x-icon">
-  <!-- <script src="https://kit.fontawesome.com/4e5a72c756.js"></script> -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
   <link rel="stylesheet" href="css/main.bundle.css">
+
+  <style>
+    /* --- General Fixes --- */
+    body {
+      overflow-x: hidden;
+    }
+
+    /* --- Timeline Fixes --- */
+    .timeline-container {
+      max-height: 400px;
+      overflow-y: auto;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .timeline-item {
+      display: flex;
+      flex-wrap: wrap; /* Allows date/text to stack on tiny screens */
+      margin-bottom: 10px;
+      align-items: baseline;
+    }
+
+    .date {
+      min-width: 110px;
+      font-weight: bold;
+      color: #3273dc;
+    }
+
+    .description {
+      flex: 1;
+    }
+
+    /* --- Publication Card Fixes --- */
+    .publication-card {
+      display: flex;
+      flex-direction: row; /* Desktop side-by-side */
+      margin-bottom: 2rem;
+      border: 1px solid #f0f0f0;
+      border-radius: 8px;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .publication-card:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .pub-image-wrapper {
+      flex: 0 0 300px; /* Fixed width on desktop */
+      padding: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fafafa;
+    }
+
+    .pub-image-wrapper img {
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+
+    .pub-content {
+      padding: 20px;
+      flex: 1;
+    }
+
+    /* MOBILE RESPONSIVENESS */
+    @media screen and (max-width: 768px) {
+      .publication-card {
+        flex-direction: column; /* Stack image on top of text */
+      }
+
+      .pub-image-wrapper {
+        flex: none;
+        width: 100%;
+        height: 250px;
+      }
+
+      .pub-image-wrapper img {
+        height: 100%;
+        width: auto;
+      }
+
+      .date {
+        min-width: 100%; /* Date gets its own line on very small screens */
+        margin-bottom: 2px;
+      }
+    }
+
+    /* Hover image swap logic */
+    .card-publication-1:hover #card-media-1 { content: url('img/publications/turbo_graph.png'); }
+    .card-publication-2:hover #card-media-2 { content: url('img/publications/acc_masks.png'); }
+    .card-publication-3:hover #card-media-3 { content: url('img/publications/leaves_ours.gif'); }
+    .card-publication-4:hover #card-media-4 { content: url('img/publications/strata_ours.gif'); }
+  </style>
 </head>
 
 <body>
   <nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <div class="navbar-item is-hidden-desktop">
+      <div class="navbar-item">
         <a href="https://github.com/rsrinath14" class="icon is-large has-text-light">
           <i class="fab fa-2x fa-github"></i>
         </a>
       </div>
-      <!-- <div class="navbar-item is-hidden-desktop">
-        <a href="https://fullstackmark.com" class="icon is-large has-text-light">
-          <i class="fas fa-2x fa-globe"></i>
-        </a>
-      </div> -->
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navMenu">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
     </div>
-    <div class="navbar-menu">
+
+    <div id="navMenu" class="navbar-menu">
       <div class="navbar-end">
-        <div class="navbar-item">
-          <a href="https://github.com/rsrinath14" class="icon is-large has-text-light">
-            <i class="fab fa-2x fa-github"></i>
-          </a>
-        </div>
         <div class="navbar-item">
           <a href="https://scholar.google.com/citations?user=r6k_dx4AAAAJ&hl=en" class="icon is-large has-text-light">
             <i class="fas fa-2x fa-graduation-cap"></i>
@@ -39,38 +133,24 @@
         <div class="navbar-item">
           <a href="https://www.linkedin.com/in/r-srinath14/" class="icon is-large has-text-light">
             <i class="fab fa-2x fa-linkedin"></i>
-
           </a>
         </div>
       </div>
     </div>
-
   </nav>
 
   <section class="hero is-primary">
     <div class="hero-body">
-      <div class="container">
-        <div class="level">
-          <div class="level-item has-text-centered">
-            <figure class="image is-128x128">
-              <img class="is-rounded" src="img/profile.jpg">
-            </figure>
-          </div>
-        </div>
-        <div class="columns has-text-centered">
-          <div class="column">
-            <h1 class="title is-1">
-              Srinath Ravi
-            </h1>
-            <h2 class="subtitle">
-            </h2>
-            <p>
-              <a href="docs/Resume.pdf" class="icon has-text-light">
-                <i class="fas fa-file-pdf"></i> <strong>Resume</strong>
-              </a>
-            </p>
-          </div>
-        </div>
+      <div class="container has-text-centered">
+        <figure class="image is-128x128 is-inline-block">
+          <img class="is-rounded" src="img/profile.jpg">
+        </figure>
+        <h1 class="title is-1">Srinath Ravi</h1>
+        <p>
+          <a href="docs/Resume.pdf" class="icon has-text-light">
+            <i class="fas fa-file-pdf"></i> <strong>Resume</strong>
+          </a>
+        </p>
       </div>
     </div>
   </section>
@@ -91,480 +171,174 @@
         Neural Radiance Fields (NeRF).</p>
     </div>
   </section>
+
   <section class="section">
     <div class="container">
       <h1 class="title">News</h1>
       <hr />
-      <style>
-        .timeline-container {
-          max-height: 300px;
-          /* Adjust as needed */
-          overflow-y: auto;
-          /* Enables vertical scrolling */
-          padding: 10px;
-          border: 1px solid #ddd;
-          /* Optional border for visibility */
-        }
-
-        .timeline {
-          display: flex;
-          flex-direction: column;
-          gap: 5px;
-          /* Reduced spacing between items */
-        }
-
-        .timeline-item {
-          display: flex;
-          align-items: baseline;
-          margin: 0;
-          /* Ensure no extra margin is added */
-        }
-
-        .date {
-          min-width: 120px;
-          /* Keeps date alignment consistent */
-          font-weight: bold;
-          margin-right: 5px;
-          /* Reduced space between date and description */
-        }
-
-        .description {
-          flex-grow: 1;
-        }
-      </style>
       <div class="timeline-container">
-        <div class="timeline">
-        </div>
         <div class="timeline-item">
           <div class="date">Nov 2025</div>
-          <div class="description">Our work, UniC-Lift, was accepted at <a href="https://aaai.org/conference/aaai/aaai-26/"
-              target="_blank">AAAI 2026</a>!</div>
+          <div class="description">Our work, UniC-Lift, was accepted at <a href="https://aaai.org/conference/aaai/aaai-26/" target="_blank">AAAI 2026</a>!</div>
         </div>
         <div class="timeline-item">
           <div class="date">Aug 2025</div>
-          <div class="description">Started MS in Computer Vision at <a href="https://www.cmu.edu/"
-              target="_blank">CMU</a></div>
+          <div class="description">Started MS in Computer Vision at <a href="https://www.cmu.edu/" target="_blank">CMU</a></div>
         </div>
         <div class="timeline-item">
-          <div class="date">Oct 2024</div>
-          <div class="description">Our work, ChromaDistill, was accepted at <a href="https://wacv2025.thecvf.com/"
-              target="_blank">WACV 2025</a>!</div>
+            <div class="date">Oct 2024</div>
+            <div class="description">Our work, ChromaDistill, was accepted at <a href="https://wacv2025.thecvf.com/" target="_blank">WACV 2025</a>!</div>
         </div>
         <div class="timeline-item">
-          <div class="date">Oct 2024</div>
-          <div class="description">Joined <a href="https://www.unscript.ai/" target="_blank">UnscriptAI</a> as an AI
-            Research Scientist.</div>
+            <div class="date">Oct 2024</div>
+            <div class="description">Joined <a href="https://www.unscript.ai/" target="_blank">UnscriptAI</a> as an AI Research Scientist.</div>
         </div>
         <div class="timeline-item">
-          <div class="date">May 2024</div>
-          <div class="description">Started working as a 3D-Vision Consultant with Capital One in collaboration with
-            IISc.</div>
+            <div class="date">May 2024</div>
+            <div class="description">Started working as a 3D-Vision Consultant with Capital One in collaboration with IISc.</div>
         </div>
         <div class="timeline-item">
-          <p>
-          <div class="date">Dec 2023</div>
-          <div class="description">
-            Invited as a speaker for the 4th edition of the
-            <a href="docs/Capital_One_ML_Conference_2023.pdf" target="_blank">Capital One ML Summit</a>.
-          </div>
-          </p>
+            <div class="date">Dec 2023</div>
+            <div class="description">Invited as a speaker for the 4th edition of the <a href="docs/Capital_One_ML_Conference_2023.pdf" target="_blank">Capital One ML Summit</a>.</div>
         </div>
         <div class="timeline-item">
-          <div class="date">Nov 2023</div>
-          <div class="description">Presented a poster at the <a
-              href="https://adobe-genai-workshop.github.io/#meet-our-lab" target="_blank">Adobe-IISc GenAI Workshop</a>.
-          </div>
+            <div class="date">Nov 2023</div>
+            <div class="description">Presented a poster at the <a href="https://adobe-genai-workshop.github.io/#meet-our-lab" target="_blank">Adobe-IISc GenAI Workshop</a>.</div>
         </div>
         <div class="timeline-item">
-          <div class="date">Aug 2023</div>
-          <div class="description">Our work, CoRF, was accepted at the "Second Workshop on AI for 3D Content Creation,"
-            <a href="https://iccv2023.thecvf.com/" target="_blank">ICCV 2023</a>!
-          </div>
+            <div class="date">Aug 2023</div>
+            <div class="description">Our work, CoRF, was accepted at the "Second Workshop on AI for 3D Content Creation," <a href="https://iccv2023.thecvf.com/" target="_blank">ICCV 2023</a>!</div>
         </div>
         <div class="timeline-item">
-          <div class="date">Jul 2023</div>
-          <div class="description">Our work, Strata-NeRF, was accepted at <a href="https://iccv2023.thecvf.com/"
-              target="_blank">ICCV 2023</a>!</div>
+            <div class="date">Jul 2023</div>
+            <div class="description">Our work, Strata-NeRF, was accepted at <a href="https://iccv2023.thecvf.com/" target="_blank">ICCV 2023</a>!</div>
         </div>
         <div class="timeline-item">
-          <div class="date">Aug 2022</div>
-          <div class="description">Joined the <a href="https://val.cds.iisc.ac.in/" target="_blank">Vision and AI
-              Lab</a> at Indian Institute of Science!</div>
+            <div class="date">Aug 2022</div>
+            <div class="description">Joined the <a href="https://val.cds.iisc.ac.in/" target="_blank">Vision and AI Lab</a> at Indian Institute of Science!</div>
         </div>
         <div class="timeline-item">
-          <div class="date">May 2022</div>
-          <div class="description">Joined <a href="https://www.springworks.in/" target="_blank">Springworks</a>
-            full-time as an SDE-1 (Machine Learning).</div>
+            <div class="date">May 2022</div>
+            <div class="description">Joined <a href="https://www.springworks.in/" target="_blank">Springworks</a> full-time as an SDE-1 (Machine Learning).</div>
         </div>
         <div class="timeline-item">
-          <div class="date">Mar 2022</div>
-          <div class="description">Awarded "Intern of the Month" at Springworks.</div>
+            <div class="date">Mar 2022</div>
+            <div class="description">Awarded "Intern of the Month" at Springworks.</div>
         </div>
         <div class="timeline-item">
-          <div class="date">Aug 2021</div>
-          <div class="description">Joined <a href="https://www.springworks.in/" target="_blank">Springworks</a> as a
-            Machine Learning Engineer Intern.</div>
+            <div class="date">Aug 2021</div>
+            <div class="description">Joined <a href="https://www.springworks.in/" target="_blank">Springworks</a> as a Machine Learning Engineer Intern.</div>
         </div>
         <div class="timeline-item">
-          <div class="date">Aug 2021</div>
-          <div class="description">Joined <a href="https://resoluteaisoftware.in/" target="_blank">ResoluteAI.in</a> as
-            a Machine Learning Engineer Intern.</div>
+            <div class="date">Aug 2021</div>
+            <div class="description">Joined <a href="https://resoluteaisoftware.in/" target="_blank">ResoluteAI.in</a> as a Machine Learning Engineer Intern.</div>
         </div>
         <div class="timeline-item">
-          <div class="date">Aug 2018</div>
-          <div class="description">Started B.Tech in CSE at <a href="https://www.dsce.edu.in/" target="_blank">DSCE</a>,
-            Bangalore.</div>
+            <div class="date">Aug 2018</div>
+            <div class="description">Started B.Tech in CSE at <a href="https://www.dsce.edu.in/" target="_blank">DSCE</a>, Bangalore.</div>
         </div>
       </div>
     </div>
   </section>
-
 
   <section class="section">
     <div class="container">
       <h1 class="title">Publications</h1>
       <hr />
-      <!-- Common CSS for Images -->
-      <style>
-        .card {
-          display: flex;
-          align-items: stretch;
-          position: relative;
-          margin-bottom: 20px;
-          transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
 
-        .card:hover {
-          transform: scale(1.0);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .card-image {
-          flex: 0 0 auto;
-          width: 300px;
-          aspect-ratio: 1 / 1;
-          /* Maintain a square aspect ratio */
-          overflow: hidden;
-          padding: 10px;
-          box-sizing: border-box;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .card-image img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.5s ease;
-        }
-
-        .card-content {
-          flex: 1;
-          padding-left: 20px;
-          display: flex;
-          flex-direction: column;
-          justify-content: space-between;
-        }
-
-        /* Hover Effect */
-        .card-publication-1:hover #card-media-1 {
-          transform: scale(1.05);
-          content: url('img/publications/turbo_graph.png');
-        }
-
-        .card-publication-2:hover #card-media-2 {
-          transform: scale(1.05);
-          content: url('img/publications/acc_masks.png');
-        }
-
-        .card-publication-3:hover #card-media-3 {
-          transform: scale(1.05);
-          content: url('img/publications/publication3_hover.png');
-        }
-
-        .card-publication-4:hover #card-media-4 {
-          transform: scale(1.05);
-          content: url('img/publications/publication4_hover.png');
-        }
-      </style>
-
-      <!-- Publication 1: Turbo-GS -->
-      <div class="card card-publication-1" style="display: flex; align-items: stretch; position: relative;">
-        <div class="card-image"
-          style="flex: 0 0 auto; width: 350px; height: 350px; padding: 10px; box-sizing: border-box;">
-          <figure class="image" style="width: 100%; height: 100%; margin: 0;">
-            <img id="card-media-1" src="img/publications/turbo_teaser.png" alt="Turbo-GS"
-              style="width: 100%; height: 100%; object-fit: contain; ">
-          </figure>
+      <div class="publication-card card-publication-1">
+        <div class="pub-image-wrapper">
+          <img id="card-media-1" src="img/publications/turbo_teaser.png" alt="Turbo-GS">
         </div>
-        <div class="card-content" style="flex: 1; padding-left: 20px;">
-          <div class="media">
-            <div class="media-content">
-              <p class="title is-4" style="margin: 0;">Turbo-GS: Accelerating 3D Gaussian Fitting for High-Quality
-                Radiance Fields</p>
-              <p class="subtitle is-6" style="line-height: 1.8; margin: 0;">
-                <span style="margin-right: 4px; position: relative; display: inline-block;">Tao&nbsp;Lu,
-                  <span style="position: absolute; top: -5px; right: -4px; font-size: 18px;">*</span>
-                </span>
-                <span style="margin-right: 4px; position: relative; display: inline-block;">Ankit&nbsp;Dhiman,
-                  <span style="position: absolute; top: -5px; right: -4px; font-size: 18px;">*</span>
-                </span>
-                <span
-                  style="margin-right: 4px; position: relative; display: inline-block;"><strong>Srinath&nbsp;R,</strong>
-                  <span style="position: absolute; top: -5px; right: -4px; font-size: 18px;">*</span>
-                </span>
-                <span style="margin-right: 4px;">Emre&nbsp;Arslan,</span>
-                <span style="margin-right: 4px;">Angela&nbsp;Xing,</span>
-                <span style="margin-right: 4px;">Yuanbo&nbsp;Xiangli,</span>
-                <span style="margin-right: 4px;">R&nbsp;Venkatesh&nbsp;Babu,</span>
-                <span>Srinath&nbsp;Sridhar</span>
-              </p>
-              <div
-                style="font-size: 1.0rem; color: black; font-weight: bold; display: inline-block; padding: 0; margin: 0;">
-                <p style="margin: 0; padding: 0;">Under Review</p>
-              </div>
-            </div>
-          </div>
+        <div class="pub-content">
+          <p class="title is-4">Turbo-GS: Accelerating 3D Gaussian Fitting for High-Quality Radiance Fields</p>
+          <p class="subtitle is-6">
+            Tao Lu*, Ankit Dhiman*, <strong>Srinath R*,</strong> Emre Arslan, Angela Xing, Yuanbo Xiangli, R Venkatesh Babu, Srinath Sridhar
+          </p>
+          <div class="tags"><span class="tag is-black">Under Review</span></div>
           <div class="content">
             Novel-view synthesis is key for 3D reconstruction and mixed reality, with 3D Gaussian Splatting (3DGS)
-            offering real-time, high-quality results. However, 3DGS is slow to train, taking up to 30 minutes for 200
-            views. Turbo-GS speeds up optimization by using fewer steps, improving densification with error guidance,
-            and introducing a convergence-aware budget control mechanism, all while maintaining high-quality rendering.
+            offering real-time, high-quality results. However, 3DGS is slow to train. Turbo-GS speeds up optimization by using fewer steps...
           </div>
-          <div class="tags" style="margin-top: 10px;">
-            <a href="https://ivl.cs.brown.edu/research/turbo-gs" target="_blank" rel="noopener noreferrer"
-              style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-              Project Page
-            </a>
-            <a href="https://arxiv.org/pdf/2412.13547" target="_blank" rel="noopener noreferrer"
-              style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-              Paper
-            </a>
-            <a href="https://github.com/inspirelt/Turbo-GS" target="_blank" rel="noopener noreferrer"
-              style="display: inline-block; padding: 8px 12px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-              Code
-            </a>
+          <div class="buttons">
+            <a href="https://ivl.cs.brown.edu/research/turbo-gs" class="button is-small is-dark">Project Page</a>
+            <a href="https://arxiv.org/pdf/2412.13547" class="button is-small is-dark">Paper</a>
+            <a href="https://github.com/inspirelt/Turbo-GS" class="button is-small is-dark">Code</a>
           </div>
         </div>
       </div>
 
-      <!-- Publication 2: Acc3DSeg -->
-      <div class="card card-publication-2" style="display: flex; align-items: stretch; position: relative;">
-        <div class="card-image"
-          style="flex: 0 0 auto; width: 350px; height: 350px; padding: 10px; box-sizing: border-box;">
-          <figure class="image" style="width: 100%; height: 100%; margin: 0;">
-            <img id="card-media-2" src="img/publications/acc_rgb.png" alt="Acc3DSeg"
-              style="width: 100%; height: 100%; object-fit: hidden; ">
-          </figure>
+      <div class="publication-card card-publication-2">
+        <div class="pub-image-wrapper">
+          <img id="card-media-2" src="img/publications/acc_rgb.png" alt="UniC-Lift">
         </div>
-        <div class="card-content" style="flex: 1; padding-left: 20px;">
-          <div class="media">
-            <div class="media-content">
-              <p class="title is-4" style="margin: 0;">UniC-Lift: Unified 3D Instance Segmentation via Contrastive learning
-              </p>
-              <p class="subtitle is-6" style="line-height: 1.8; margin: 0;">
-                <span style="margin-right: 4px; position: relative; display: inline-block;">
-                  Ankit&nbsp;Dhiman,
-                  <span style="position: absolute; top: -5px; right: -4px; font-size: 18px;">*</span>
-                </span>
-                <span style="margin-right: 4px; position: relative; display: inline-block;">
-                  <strong>Srinath&nbsp;R,</strong>
-                  <span style="position: absolute; top: -5px; right: -4px; font-size: 18px;">*</span>
-                </span>
-                <span style="margin-right: 4px; position: relative; display: inline-block;">
-                  Jaswanth&nbsp;Reddy,
-                </span>
-
-                <span style="margin-right: 4px; position: relative; display: inline-block;">
-                  R&nbsp;Venkatesh&nbsp;Babu
-                </span>
-              </p>
-              <div
-                style="font-size: 1.0rem; color: black; font-weight: bold; display: inline-block; padding: 0; margin: 0;">
-                <p style="margin: 0; padding: 0;">AAAI 2026</p>
-              </div>
-            </div>
-          </div>
+        <div class="pub-content">
+          <p class="title is-4">UniC-Lift: Unified 3D Instance Segmentation via Contrastive learning</p>
+          <p class="subtitle is-6">
+            Ankit Dhiman*, <strong>Srinath R*,</strong> Jaswanth Reddy, R Venkatesh Babu
+          </p>
+          <div class="tags"><span class="tag is-black">AAAI 2026</span></div>
           <div class="content">
-            <p style="margin-top: 0; padding-top: 0;">Recent advances in novel-view synthesis, including NeRF and 3DGS,
-              have
-              driven efforts to lift 2D segmentation labels to 3D. Existing methods often struggle with multi-view
-              consistency and rely on costly two-stage processes. This work proposes an efficient, single-stage
-              framework for 3D segmentation that eliminates offline clustering and object count dependencies, improving
-              performance on complex real-world scenes.</p>
+            This work proposes an efficient, single-stage framework for 3D segmentation that eliminates offline clustering and object count dependencies, improving performance on complex real-world scenes.
           </div>
-          <div class="tags" style="margin-top: 10px;">
-            <a href="https://unic-lift.github.io/" target="_blank" rel="noopener noreferrer"
-              style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-              Project Page
-            </a>
-            <a href="https://arxiv.org/pdf/2512.24763" target="_blank" rel="noopener noreferrer"
-              style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-              Paper
-            </a>
-            <a href="https://github.com/val-iisc/UniC-Lift" target="_blank" rel="noopener noreferrer"
-              style="display: inline-block; padding: 8px 12px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-              Code
-            </a>
+          <div class="buttons">
+            <a href="https://unic-lift.github.io/" class="button is-small is-dark">Project Page</a>
+            <a href="https://arxiv.org/pdf/2512.24763" class="button is-small is-dark">Paper</a>
+            <a href="https://github.com/val-iisc/UniC-Lift" class="button is-small is-dark">Code</a>
           </div>
         </div>
       </div>
 
-      <!-- Publication 3: ChromaDistill -->
-      <div class="card card-publication-3" style="display: flex; align-items: stretch; position: relative;">
-        <div class="card-image"
-          style="flex: 0 0 auto; width: 350px; height: 350px; padding: 10px; box-sizing: border-box;">
-          <figure class="image" style="width: 100%; height: 100%; margin: 0;">
-            <img id="card-media-3" src="img/publications/leaves_grey.gif" alt="Publication 3"
-              style="width: 100%; height: 100%; object-fit: hidden; ">
-          </figure>
+      <div class="publication-card card-publication-3">
+        <div class="pub-image-wrapper">
+          <img id="card-media-3" src="img/publications/leaves_grey.gif" alt="ChromaDistill">
         </div>
-        <div class="card-content" style="flex: 1; padding-left: 20px;">
-          <div class="media">
-            <div class="media-content">
-              <p class="title is-4" style="margin: 0;">
-              <p class="title is-4" style="margin: 0;">ChromaDistill: Colorizing Monochrome Radiance Fields with
-                Knowledge Distillation</p>
-              <p class="subtitle is-6" style="line-height: 1.8; margin: 0;">
-                <span style="margin-right: 4px;">Ankit&nbsp;Dhiman,</span>
-                <span style="margin-right: 4px; font-weight: 900; color: #000;"><strong>Srinath&nbsp;R,</strong></span>
-                <span style="margin-right: 4px;">Srinjay&nbsp;Sarkar,</span>
-                <span style="margin-right: 4px; position: relative; display: inline-block;">
-                  Lokesh&nbsp;R&nbsp;Boregowda,
-                </span>
-                <span style="margin-right: 4px; position: relative; display: inline-block;">
-                  R&nbsp;Venkatesh&nbsp;Babu
-                </span>
-              </p>
-              <div
-                style="font-size: 1.0rem; color: black; font-weight: bold; display: inline-block; padding: 0; margin: 0;">
-                <p style="margin: 0; padding: 0;">WACV 2025 (Also appeared in AI3DCC workshop in ICCV'23)</p>
-              </div>
-            </div>
+        <div class="pub-content">
+          <p class="title is-4">ChromaDistill: Colorizing Monochrome Radiance Fields with Knowledge Distillation</p>
+          <p class="subtitle is-6">
+            Ankit Dhiman, <strong>Srinath R,</strong> Srinjay Sarkar, Lokesh R Boregowda, R Venkatesh Babu
+          </p>
+          <div class="tags"><span class="tag is-black">WACV 2025</span></div>
+          <div class="content">
+            A method for colorizing 3D scenes from grayscale multi-view images using pre-trained image colorization models. The approach ensures high-quality, consistent colorization without added overhead.
           </div>
-          <div class="content" style="margin-top: 2px;">
-            <p style="margin-top: 0; padding-top: 0;">This work presents a method for colorizing 3D scenes from
-              grayscale multi-view images using pre-trained
-              image colorization models. The approach ensures high-quality, consistent colorization without added
-              computational overhead during inference. It is effective for NeRF and 3DGS representations, producing
-              high-quality
-              results across diverse scenes.</p>
-          </div>
-          <div class="tags" style="margin-top: 10px;">
-            <a href="https://val.cds.iisc.ac.in/chroma-distill.github.io/" target="_blank" rel="noopener noreferrer"
-              style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-              Project Page
-            </a>
-            <a href="https://arxiv.org/pdf/2309.07668" target="_blank" rel="noopener noreferrer"
-              style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-              Paper
-            </a>
-            <a href="https://github.com/val-iisc/ChromaDistill" target="_blank" rel="noopener noreferrer"
-              style="display: inline-block; padding: 8px 12px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-              Code
-            </a>
-          </div>
-
-        </div>
-      </div>
-
-      <!-- Publication 4: Strata-NeRF -->
-      <div class="card card-publication-4" style="display: flex; align-items: stretch; position: relative;">
-        <div class="card-image"
-          style="flex: 0 0 auto; width: 350px; height: 350px; padding: 10px; box-sizing: border-box;">
-          <figure class="image" style="width: 100%; height: 100%; margin: 0;">
-            <img id="card-media-4" src="img/publications/strata_blur.gif" alt="Publication 4"
-              style="width: 100%; height: 100%; object-fit: hidden; ">
-          </figure>
-        </div>
-        <div class="card-content" style="flex: 1; padding-left: 20px;">
-          <div class="media">
-            <div class="media-content">
-              <p class="title is-4" style="margin: 0;">Strata-NeRF: Neural Radiance Fields for Stratified Scenes</p>
-              <p class="subtitle is-6" style="line-height: 1.8; margin: 0;">
-                <span style="margin-right: 4px;">Ankit&nbsp;Dhiman,</span>
-                <span style="margin-right: 4px; font-weight: 900; color: #000;"><strong>Srinath&nbsp;R,</strong></span>
-                <span style="margin-right: 4px;">Harsh&nbsp;Rangwani,</span>
-                <span style="margin-right: 4px;">Rishubh&nbsp;Parihar,</span>
-                <span style="margin-right: 4px;">Lokesh&nbsp;R&nbsp;Boregowda,</span>
-                <span style="margin-right: 4px;">Srinath&nbsp;Sridhar,</span>
-                <span>R&nbsp;Venkatesh&nbsp;Babu</span>
-              </p>
-              <div
-                style="font-size: 1.0rem; color: black; font-weight: bold; display: inline-block; padding: 0; margin: 0;">
-                <p style="margin: 0; padding: 0;">ICCV 2023</p>
-              </div>
-            </div>
-          </div>
-          <div class="content" style="margin-top: 2px;">
-            <p style="margin-top: 0; padding-top: 0;">Strata-NeRF extends Neural Radiance Fields (NeRF) to model
-              layered scenes, enabling smooth transitions between different scene levels. By conditioning on Vector
-              Quantized (VQ) latent representations, it handles abrupt structural changes. Evaluations show it
-              captures stratified scenes with high fidelity and minimal artifacts, outperforming existing methods.</p>
-          </div>
-          <div class="tags" style="margin-top: 10px;">
-            <a href="https://ankitatiisc.github.io/Strata-NeRF" target="_blank" rel="noopener noreferrer"
-              style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-              Project Page
-            </a>
-            <a href="https://arxiv.org/pdf/2308.10337" target="_blank" rel="noopener noreferrer"
-              style="display: inline-block; padding: 8px 12px; margin-right: 5px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-              Paper
-            </a>
-            <a href="https://github.com/ankitatiisc/Strata-NeRF" target="_blank" rel="noopener noreferrer"
-              style="display: inline-block; padding: 8px 12px; text-decoration: none; background-color: rgba(96, 96, 96, 0.7); color: #FFF; border-radius: 4px; font-size: 14px; transition: background-color 0.3s, transform 0.2s;">
-              Code
-            </a>
+          <div class="buttons">
+            <a href="https://val.cds.iisc.ac.in/chroma-distill.github.io/" class="button is-small is-dark">Project Page</a>
+            <a href="https://arxiv.org/pdf/2309.07668" class="button is-small is-dark">Paper</a>
+            <a href="https://github.com/val-iisc/ChromaDistill" class="button is-small is-dark">Code</a>
           </div>
         </div>
       </div>
 
-      <!-- Hover Effect Styling -->
-      <style>
-        .card {
-          transition: transform 0.1s ease, box-shadow 0.3s ease;
-        }
-
-        .card:hover {
-          transform: scale(1.0);
-          box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .card .card-image img {
-          transition: transform 0.1s ease;
-        }
-
-        .card-publication-1:hover #card-media-1 {
-          transform: scale(1.0);
-          content: url('img/publications/turbo_graph.png');
-        }
-
-        .card-publication-2:hover #card-media-2 {
-          transform: scale(1.0);
-          content: url('img/publications/acc_masks.png');
-        }
-
-        .card-publication-3:hover #card-media-3 {
-          transform: scale(1.0);
-          content: url('img/publications/leaves_ours.gif');
-        }
-
-        .card-publication-4:hover #card-media-4 {
-          transform: scale(1.0);
-          content: url('img/publications/strata_ours.gif');
-        }
-      </style>
+      <div class="publication-card card-publication-4">
+        <div class="pub-image-wrapper">
+          <img id="card-media-4" src="img/publications/strata_blur.gif" alt="Strata-NeRF">
+        </div>
+        <div class="pub-content">
+          <p class="title is-4">Strata-NeRF: Neural Radiance Fields for Stratified Scenes</p>
+          <p class="subtitle is-6">
+            Ankit Dhiman, <strong>Srinath R,</strong> Harsh Rangwani, Rishubh Parihar, Lokesh R Boregowda, Srinath Sridhar, R Venkatesh Babu
+          </p>
+          <div class="tags"><span class="tag is-black">ICCV 2023</span></div>
+          <div class="content">
+            Strata-NeRF extends Neural Radiance Fields to model layered scenes. By conditioning on Vector Quantized (VQ) latent representations, it handles abrupt structural changes with high fidelity.
+          </div>
+          <div class="buttons">
+            <a href="https://ankitatiisc.github.io/Strata-NeRF" class="button is-small is-dark">Project Page</a>
+            <a href="https://arxiv.org/pdf/2308.10337" class="button is-small is-dark">Paper</a>
+            <a href="https://github.com/ankitatiisc/Strata-NeRF" class="button is-small is-dark">Code</a>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
-
-
 
   <section class="section">
     <div class="container">
       <h1 class="title">Experience</h1>
       <hr />
-      <div class="card">
+      
+      <div class="card mb-5">
         <div class="card-content">
           <div class="media">
             <div class="media-left">
@@ -574,31 +348,19 @@
             </div>
             <div class="media-content">
               <p class="title is-4">UnscriptAI</p>
-              <p class="subtitle is-6">
-                <strong>AI Research Scientist</strong> <span>—</span>
-                <time datetime="2024-10">Oct 2024</time> to <time datetime="">June 2025</time>
-              </p>
-
+              <p class="subtitle is-6"><strong>AI Research Scientist</strong> | Oct 2024 — June 2025</p>
             </div>
           </div>
           <div class="content">
             <ul>
-              <li>
-                Engineered advanced talking head models using 3D vision representations, enabling the creation of
-                highly realistic avatars videos for large-scale advertising campaigns with top brands in India. The
-                proposed method minimize reliance on lengthy training video captures during photo shoots, significantly
-                reducing production costs.
-              </li>
-              <li>
-                Led a team to design automated pipelines for creating custom avatars and short-form videos, using
-                advanced image and video synthesis models to deliver high-quality content at scale.
-              </li>
-
+              <li>Engineered advanced talking head models using 3D vision representations for highly realistic avatars.</li>
+              <li>Led team to design automated pipelines for custom avatars and short-form videos.</li>
             </ul>
           </div>
         </div>
       </div>
-      <div class="card card-gap">
+
+      <div class="card mb-5">
         <div class="card-content">
           <div class="media">
             <div class="media-left">
@@ -608,36 +370,19 @@
             </div>
             <div class="media-content">
               <p class="title is-4">Capital One</p>
-              <p class="subtitle is-6">
-                <strong>Consultant</strong> <span>—</span>
-                <time datetime="2024-10">May 2024</time> to <time datetime="">Oct 2024</time>
-              </p>
-
+              <p class="subtitle is-6"><strong>Consultant</strong> | May 2024 — Oct 2024</p>
             </div>
           </div>
           <div class="content">
             <ul>
-              <li>
-                Developed an end-to-end immersive experience pipeline for Capital One’s vehicle reselling vertical,
-                <a href="https://www.capitalone.com/cars/" target="_blank"><strong>Auto Navigator</strong></a>, in
-                collaboration with IISc.
-              </li>
-              <li>
-                Implemented methods to detect inconsistencies in COLMAP by analyzing extrinsic camera information,
-                reducing computation costs
-                and flagging inconsistencies in real-world mobile phone captures.
-              </li>
-              <li>
-                Leveraged various NeRF and Gaussian Splatting techniques to reconstruct vehicle models under diverse
-                lighting conditions and camera types.
-              </li>
+              <li>Developed immersive experience pipeline for Auto Navigator in collaboration with IISc.</li>
+              <li>Implemented methods to detect inconsistencies in COLMAP, reducing computation costs.</li>
             </ul>
-
-
           </div>
         </div>
       </div>
-      <div class="card card-gap">
+
+      <div class="card mb-5">
         <div class="card-content">
           <div class="media">
             <div class="media-left">
@@ -647,285 +392,35 @@
             </div>
             <div class="media-content">
               <p class="title is-4">Vision and AI Lab, IISc</p>
-              <p class="subtitle is-6">
-                <strong>Research Assistant</strong> <span>—</span>
-                <time datetime="2024-10">Aug 2022</time> to <time datetime="">Oct 2024</time>
-              </p>
+              <p class="subtitle is-6"><strong>Research Assistant</strong> | Aug 2022 — Oct 2024</p>
             </div>
           </div>
           <div class="content">
             <ul>
-              <li>
-                Designed and developed <a href="https://ankitatiisc.github.io/Strata-NeRF/"
-                  target="_blank"><strong>Strata‑NeRF</strong></a>, an advanced Implicit NeRF model utilizing VQ‑VAE to
-                handle stratified scenes.
-                This model surpassed state-of-the-art techniques such as MipNeRF‑360, TensoRF, and InstantNGP and was
-                accepted at <em>ICCV 2023</em>.
-              </li>
-              <li>
-                Contributed to the creation of <a href="https://arxiv.org/abs/2309.07668"
-                  target="_blank"><strong>ChromaDistill</strong></a>, a Radiance Field Network capable of colorizing
-                grayscale and infrared images
-                with 3D consistency. This work was accepted at <em>WACV 2025</em>.
-              </li>
-              <li>
-                Introduced <a href="https://arxiv.org/abs/2309.07668"
-                  target="_blank"><strong>Unic-Lift</strong></a>, an efficient single-stage approach for 3D instance segmentation that
-                enforces multi-view consistency when lifting 2D labels to 3D and avoids costly offline clustering; accepted at <em>AAAI 2026</em>.
-              </li>
-              <li>
-                Developed <a href="https://ivl.cs.brown.edu/research/turbo-gs.html"
-                  target="_blank"><strong>Turbo-GS</strong></a>, a cutting-edge Gaussian fitting algorithm that performed efficient
-                optimization, achieving significantly faster
-                convergence with reduced memory usage.
-              </li>
+              <li>Developed Strata-NeRF utilizing VQ-VAE for stratified scenes (ICCV 2023).</li>
+              <li>Contributed to ChromaDistill for colorizing grayscale/IR images with 3D consistency.</li>
+              <li>Introduced UniC-Lift for efficient single-stage 3D instance segmentation.</li>
             </ul>
-
-          </div>
-        </div>
-      </div>
-      <div class="card card-gap">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-48x48">
-                <img src="img/springworks_logo.jpeg" alt="Springworks">
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-4">Springworks</p>
-              <p class="subtitle is-6" style="margin-bottom: 5px;">
-                <strong>SDE-1 (Machine Learning)</strong> <span>—</span>
-                <time datetime="2024-10">May 2022</time> to <time datetime="">Jul 2022</time>
-              </p>
-              <p class="subtitle is-6" style="margin-top: 5px;">
-                <strong>Machine Learning Engineer Intern</strong> <span>—</span>
-                <time datetime="2024-10">Jul 2021</time> to <time datetime="">May 2022</time>
-              </p>
-
-
-            </div>
-          </div>
-          <div class="content">
-            <ul>
-              <li>
-                Enhanced document parsing efficiency by implementing a solution with PDFMiner, reducing reliance on
-                external APIs
-                and decreasing API call usage by 30%, thereby optimizing operational costs.
-              </li>
-              <li>
-                Contributed to the development of <a href="https://in.springverify.com/"
-                  target="_blank"><strong>SpringVerify</strong></a>, a key background verification tool, by extracting
-                critical data
-                from various document types, including driving licenses, PAN cards, and transcripts.
-              </li>
-              <li>
-                Developed and maintained algorithmic trading bots that operated 24/7 on the Binance exchange, trading a
-                wide range of cryptocurrencies.
-                Utilized Python for development and Appsmith to display analytics of the trading bot.
-              </li>
-            </ul>
-
-
-          </div>
-        </div>
-      </div>
-      <div class="card card-gap">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-48x48">
-                <img src="img/resoluteai_logo.png" alt="Placeholder image">
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-4">ResoluteAI Software</p>
-              <p class="subtitle is-6">
-                <strong>Machine Learning Engineer Intern</strong> <span>—</span>
-                <time datetime="2024-10">Mar 2021</time> to <time datetime="">Jun 2021</time>
-              </p>
-            </div>
-          </div>
-          <div class="content">
-            <ul>
-              <li>
-                Built a multilingual OCR pipeline leveraging image preprocessing and EasyOCR to identify and extract
-                package labels for <a href="https://www.daawat.com/"
-                  target="_blank"><strong>Daawat</strong></strong></a>,
-                overcoming challenges related to variable video quality and lighting.
-              </li>
-              <li>
-                Developed a computer vision solution to accurately count defective towels on a moving conveyor,
-                enhancing quality control processes
-                in high-volume production environments.
-              </li>
-              <li>
-                Implemented an active learning pipeline that reduced data annotation time by 70%, optimizing model
-                training for defect detection
-                in large-scale manufacturing at <a href="https://www.welspun.com/"
-                  target="_blank"><strong>Welspun</strong></strong></a>.
-
-              </li>
-            </ul>
-
-
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- <section class="section">
-    <div class="container">
-      <h1 class="title">Projects</h1>
-      <hr />
-      <div class="tile is-ancestor">
-        <div class="tile is-vertical is-12">
-          <div class="tile">
-            <div class="tile is-parent">
-              <article class="tile is-child notification">
-                <p class="title">Strata-NeRF: Neural Radiance Fields for Stratified Scenes</p>
-                <figure class="image is-3by2">
-                  <img class="modal-trigger" data-target="project-1-modal" src="img/project-1-cover.png">
-                </figure>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child notification">
-                <p class="title">Project title</p>
-                <figure class="image is-4by3">
-                  <img class="modal-trigger" data-target="project-2-modal" src="img/project-2-cover.png">
-                </figure>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child notification">
-                <p class="title">Project title</p>
-                <figure class="image is-4by3">
-                  <img class="modal-trigger" data-target="project-3-modal" src="img/project-3-cover.png">
-                </figure>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="tile is-ancestor">
-        <div class="tile is-vertical is-12">
-          <div class="tile">
-            <div class="tile is-parent">
-              <article class="tile is-child notification">
-                <p class="title">Project title</p>
-                <figure class="image is-4by3">
-                  <img class="modal-trigger" data-target="project-4-modal" src="img/project-4-cover.png">
-                </figure>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child notification">
-                <p class="title">Project title</p>
-                <figure class="image is-4by3">
-                  <img class="modal-trigger" data-target="project-5-modal" src="img/project-5-cover.png">
-                </figure>
-              </article>
-            </div>
-            <div class="tile is-parent">
-              <article class="tile is-child notification">
-                <p class="title">Project title</p>
-                <figure class="image is-4by3">
-                  <img class="modal-trigger" data-target="project-6-modal" src="img/project-6-cover.png">
-                </figure>
-              </article>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section> -->
-
-  <section class="section">
-    <div class="container">
-      <h1 class="title">Education</h1>
-      <hr />
-      <div class="card">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-48x48">
-                <img src="img/cmu_logo.png" alt="CMU">
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-4">Carnegie Mellon University</p>
-              <p class="subtitle is-6">
-                <strong>MS in Computer Vision</strong> 
-                <time datetime="2016-09"> (2025</time>-<time datetime="2019-09">26)</time>
-              </p>
-
-            </div>
-          </div>
-          <div class="content">
-            <ul>
-              <li>Working as a Research Assistant under Prof. Fernando De la Torre.</li>
-            </ul>
-
-          </div>
-        </div>
-      </div>
-      <div class="card">
-        <div class="card-content">
-          <div class="media">
-            <div class="media-left">
-              <figure class="image is-48x48">
-                <img src="img/dsi_logo.png" alt="dsce">
-              </figure>
-            </div>
-            <div class="media-content">
-              <p class="title is-4">Dayananda Sagar College of Engineering</p>
-              <p class="subtitle is-6">
-                <strong>BE in Computer Science</strong> 
-                <time datetime="2016-09"> (2018</time>-<time datetime="2019-09">22)</time>
-              </p>
-
-            </div>
-          </div>
-          <div class="content">
-            <ul>
-              <li>Ranked among the top 5% of my batch.</li>
-              <li>Worked as a Research Assistant under Prof. Swetha M. D., focusing on automating the diagnosis of MS
-                lesions in normally appearing white matter in collaboration with doctors from <a
-                  href="https://nimhans.ac.in/" target="_blank"><strong>NIMHANS</strong></a> .</li>
-              <li>Collaborated with Prof. Vindhya as a co-guide for final-year capstone projects in the AIML department.
-              </li>
-            </ul>
-
           </div>
         </div>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="container">
-      <h1 class="title">Academic Service</h1>
-      <hr />
-      <p>Served as a reviewer for prestigious conferences, including ACM Multimedia 2023, ACML 2023, AI-ML Systems 2023,
-        WACV 2024, CVPR 2024, ECCV 2024, ACML 2024, WACV 2025, ICLR 2025, TPAMI, CVPR 2026 </p>
-    </div>
-  </section>
-
-
-
-  <!-- <footer class="footer">
-    <div class="content has-text-centered">
-      <p>
-        <a href="https://github.com/rsrinath14/devfolio" target="_blank" class="icon has-text-primary">
-          <i class="fab fa-github"></i> <strong>devfolio</strong></a>
-      </p>
-    </div>
-  </footer> -->
-
-  <script src="js/bundle.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+      if ($navbarBurgers.length > 0) {
+        $navbarBurgers.forEach( el => {
+          el.addEventListener('click', () => {
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+          });
+        });
+      }
+    });
+  </script>
 </body>
-
 </html>
